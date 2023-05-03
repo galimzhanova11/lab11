@@ -8,12 +8,10 @@ conn = psycopg2.connect(
 )
 cur = conn.cursor()
 name = input()
-surname = input()
-phone = int(input())
 
 
  
-cur.execute("CALL insert_to_table(%s, %s, %s);", (name, surname, phone))
+cur.execute("CALL delete_by_name(%s);", [name])
 conn.commit();
 cur.close()
 conn.close()
